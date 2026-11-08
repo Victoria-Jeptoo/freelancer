@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{{ site_name }}{% endblock %}</title>
+    <link rel="icon" href="{% static 'images/favicon.ico' %}">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:700|Lato:400,700" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+    {% block extra_links %}{% endblock %}
+</head>
+<body id="page-top">
+
+<!-- ============ NAVBAR (shared by every page) ============ -->
+<nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav" data-bs-theme="dark">
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'home' %}">{{ site_name }}</a>
+        <button class="navbar-toggler fw-bold bg-primary text-white rounded" type="button"
+                data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            Menu <i class="bi bi-list"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ms-auto">
+                {% url 'home' as home_url %}
+                {% url 'about' as about_url %}
+                {% url 'contact' as contact_url %}
+                <li class="nav-item mx-lg-1">
+                    <a class="nav-link py-3 px-lg-3 rounded {% if request.path == home_url %}active{% endif %}" href="{{ home_url }}">Home</a>
+                </li>
+                <li class="nav-item mx-lg-1">
+                    <a class="nav-link py-3 px-lg-3 rounded" href="{{ home_url }}#portfolio">Portfolio</a>
+                </li>
+                <li class="nav-item mx-lg-1">
+                    <a class="nav-link py-3 px-lg-3 rounded {% if request.path == about_url %}active{% endif %}" href="{{ about_url }}">About</a>
+                </li>
+                <li class="nav-item mx-lg-1">
+                    <a class="nav-link py-3 px-lg-3 rounded {% if request.path == contact_url %}active{% endif %}" href="{{ contact_url }}">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- ============ FLASH MESSAGES (shared) ============ -->
+{% if messages %}
+<div class="flash-messages container">
+    {% for message in messages %}
+        <div class="alert alert-{% if message.tags == 'error' %}danger{% else %}{{ message.tags }}{% endif %} alert-dismissible fade show shadow" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+<!-- ============ PAGE CONTENT (each page fills this in) ============ -->
+<main>
+    {% block content %}{% endblock %}
+</main>
+
+<!-- ============ FOOTER (shared) ============ -->
+<footer class="footer text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 mb-5 mb-lg-0">
+                <h4 class="text-uppercase mb-4">Location</h4>
+                <p class="lead mb-0">2215 John Daniel Drive<br>Clark, MO 65243</p>
+            </div>
+            <div class="col-lg-4 mb-5 mb-lg-0">
+                <h4 class="text-uppercase mb-4">Around the Web</h4>
+                <a class="btn btn-outline-light btn-social mx-1" href="#!" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                <a class="btn btn-outline-light btn-social mx-1" href="#!" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+                <a class="btn btn-outline-light btn-social mx-1" href="#!" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                <a class="btn btn-outline-light btn-social mx-1" href="#!" aria-label="Dribbble"><i class="bi bi-dribbble"></i></a>
+            </div>
+            <div class="col-lg-4">
+                <h4 class="text-uppercase mb-4">About {{ site_name }}</h4>
+                <p class="lead mb-0">Freelance is a free to use, MIT licensed Bootstrap theme created by Start Bootstrap.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<div class="copyright py-4 text-center text-white">
+    <div class="container"><small>Copyright &copy; {{ site_name }} {% now "Y" %}</small></div>
+</div>
+
+<!-- Bootstrap's script (mobile menu, closing alerts) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+{% block extra_scripts %}{% endblock %}
+</body>
+</html>

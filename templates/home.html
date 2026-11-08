@@ -1,0 +1,43 @@
+{% extends 'master.html' %}
+{% load static %}
+
+{% block title %}Home | {{ site_name }}{% endblock %}
+
+{% block content %}
+
+<!-- Masthead -->
+<header class="masthead bg-primary text-white text-center">
+    <div class="container d-flex align-items-center flex-column">
+        <img class="masthead-avatar mb-5" src="{% static 'images/avataaars.svg' %}" alt="Avatar">
+        <h1 class="masthead-heading text-uppercase mb-0">{{ site_name }}</h1>
+        {% include 'divider.html' with light=True %}
+        <p class="masthead-subheading mb-0">{{ tagline }}</p>
+    </div>
+</header>
+
+<!-- Portfolio -->
+<section class="page-section portfolio" id="portfolio">
+    <div class="container">
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Portfolio</h2>
+        {% include 'divider.html' %}
+
+        <div class="row justify-content-center">
+            {% for item in items %}
+                <div class="col-md-6 col-lg-4 mb-5">
+                    <a href="{% url 'portfolio_detail' item.id %}" class="d-block text-decoration-none">
+                        <div class="portfolio-item mx-auto">
+                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                                <div class="portfolio-item-caption-content text-center text-white">
+                                    <i class="bi bi-plus-lg fs-1"></i>
+                                </div>
+                            </div>
+                            <img class="img-fluid" src="{% static item.image %}" alt="{{ item.title }}">
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% endblock %}

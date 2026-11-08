@@ -1,0 +1,28 @@
+{% extends 'master.html' %}
+
+{% block title %}About | {{ site_name }}{% endblock %}
+
+{% block content %}
+<section class="page-section bg-primary text-white mb-0 page-top-space">
+    <div class="container">
+        <h2 class="page-section-heading text-center text-uppercase text-white">About</h2>
+        {% include 'divider.html' with light=True %}
+
+        <div class="row">
+            <div class="col-lg-4 ms-auto">
+                <p class="lead">Write a short introduction about yourself or your business here.</p>
+            </div>
+            <div class="col-lg-4 me-auto">
+                <p class="lead">Add a second paragraph about your skills, experience or services.</p>
+            </div>
+        </div>
+
+        <div class="text-center mt-4">
+            <a class="btn btn-xl btn-outline-light" href="{% url 'contact' %}">
+                <i class="bi bi-envelope me-2"></i>
+                Get in touch
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}
