@@ -1,43 +1,52 @@
 {% extends 'master.html' %}
-{% load static %}
 
-{% block title %}Home | {{ site_name }}{% endblock %}
+{% block title %}BrightPath | Home{% endblock %}
 
 {% block content %}
 
-<!-- Masthead -->
-<header class="masthead bg-primary text-white text-center">
-    <div class="container d-flex align-items-center flex-column">
-        <img class="masthead-avatar mb-5" src="{% static 'images/avataaars.svg' %}" alt="Avatar">
-        <h1 class="masthead-heading text-uppercase mb-0">{{ site_name }}</h1>
-        {% include 'divider.html' with light=True %}
-        <p class="masthead-subheading mb-0">{{ tagline }}</p>
-    </div>
-</header>
-
-<!-- Portfolio -->
-<section class="page-section portfolio" id="portfolio">
-    <div class="container">
-        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Portfolio</h2>
-        {% include 'divider.html' %}
-
-        <div class="row justify-content-center">
-            {% for item in items %}
-                <div class="col-md-6 col-lg-4 mb-5">
-                    <a href="{% url 'portfolio_detail' item.id %}" class="d-block text-decoration-none">
-                        <div class="portfolio-item mx-auto">
-                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="portfolio-item-caption-content text-center text-white">
-                                    <i class="bi bi-plus-lg fs-1"></i>
-                                </div>
-                            </div>
-                            <img class="img-fluid" src="{% static item.image %}" alt="{{ item.title }}">
-                        </div>
-                    </a>
-                </div>
-            {% endfor %}
+    <!-- HERO -->
+    <section class="hero d-flex align-items-center text-center text-white">
+        <div class="container">
+            <p class="text-warning text-uppercase fw-semibold mb-2 letter-wide">Welcome to BrightPath</p>
+            <h1 class="display-3 fw-bold">We Build Ideas That Shine</h1>
+            <p class="lead mx-auto my-4 hero-text">
+                Simple, modern solutions to help your business grow online.
+            </p>
+            <a href="{% url 'services' %}" class="btn btn-warning btn-lg rounded-pill px-5 me-2 mb-2">Our Services</a>
+            <a href="{% url 'contact' %}" class="btn btn-outline-light btn-lg rounded-pill px-5 mb-2">Get in Touch</a>
         </div>
-    </div>
-</section>
+    </section>
+
+    <!-- HIGHLIGHTS -->
+    <section class="py-5 bg-light">
+        <div class="container py-4">
+            <div class="row g-4 text-center">
+                <div class="col-md-4">
+                    <div class="icon-box">⚡</div>
+                    <h5 class="fw-bold mt-3">Fast</h5>
+                    <p class="text-muted mb-0">Lightweight pages that load quickly on any device.</p>
+                </div>
+                <div class="col-md-4">
+                    <div class="icon-box">📱</div>
+                    <h5 class="fw-bold mt-3">Responsive</h5>
+                    <p class="text-muted mb-0">Looks great on phones, tablets and desktops.</p>
+                </div>
+                <div class="col-md-4">
+                    <div class="icon-box">🎯</div>
+                    <h5 class="fw-bold mt-3">Focused</h5>
+                    <p class="text-muted mb-0">Clear design that turns visitors into customers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CALL TO ACTION -->
+    <section class="cta text-center text-white py-5">
+        <div class="container py-4">
+            <h2 class="fw-bold">Ready to start your project?</h2>
+            <p class="lead mb-4">Tell us what you need and we will get back to you within one working day.</p>
+            <a href="{% url 'contact' %}" class="btn btn-warning btn-lg rounded-pill px-5">Contact Us</a>
+        </div>
+    </section>
 
 {% endblock %}

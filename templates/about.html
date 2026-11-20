@@ -1,28 +1,54 @@
 {% extends 'master.html' %}
+{% load static %}
 
-{% block title %}About | {{ site_name }}{% endblock %}
+{% block title %}BrightPath | About{% endblock %}
 
 {% block content %}
-<section class="page-section bg-primary text-white mb-0 page-top-space">
-    <div class="container">
-        <h2 class="page-section-heading text-center text-uppercase text-white">About</h2>
-        {% include 'divider.html' with light=True %}
 
-        <div class="row">
-            <div class="col-lg-4 ms-auto">
-                <p class="lead">I am a dedicated freelancer passionate about delivering creative, reliable, and high-quality digital solutions. I specialize in web design, graphic design, and other digital services, helping individuals and businesses bring their ideas to life. I am committed to professionalism, creativity, continuous learning, and client satisfaction.</p>
-            </div>
-            <div class="col-lg-4 me-auto">
-                <p class="lead">I have skills in web development, graphic design, and digital content creation. I create responsive websites, design attractive posters and branding materials, and provide creative digital solutions. I focus on quality, attention to detail, and delivering projects that meet clients' needs.</p>
-            </div>
-        </div>
+<header class="page-header text-center text-white d-flex align-items-center">
+  <div class="container">
+    <h1 class="display-4 fw-bold">About Us</h1>
+    <p class="lead mb-0">Who we are and what we stand for</p>
+  </div>
+</header>
 
-        <div class="text-center mt-4">
-            <a class="btn btn-xl btn-outline-light" href="{% url 'contact' %}">
-                <i class="bi bi-envelope me-2"></i>
-                Get in touch
-            </a>
-        </div>
+<section class="py-5">
+  <div class="container py-4">
+    <div class="row align-items-center gx-lg-5 gy-4">
+      <div class="col-lg-6">
+        <h2 class="section-title">Our Story</h2>
+        <p>We are a small, friendly team passionate about helping people and businesses succeed online.</p>
+        <p>We keep things simple, honest and effective. From the first idea to the final launch, we work closely with you so the result fits your goals.</p>
+        <ul class="list-unstyled mt-4">
+          <li class="mb-2">✅ Clear communication</li>
+          <li class="mb-2">✅ On-time delivery</li>
+          <li class="mb-2">✅ Friendly support</li>
+        </ul>
+      </div>
+      <div class="col-lg-6">
+        <img src="{% static 'img/about.jpg' %}" class="img-fluid rounded-4 shadow" alt="Our team at work">
+      </div>
     </div>
+  </div>
 </section>
+
+<section class="py-5 bg-light">
+  <div class="container">
+    <div class="row g-4 text-center">
+      <div class="col-6 col-md-3">
+        <div class="stat">50+</div><p class="text-muted">Projects</p>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="stat">30+</div><p class="text-muted">Happy Clients</p>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="stat">5</div><p class="text-muted">Years Experience</p>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="stat">24/7</div><p class="text-muted">Support</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 {% endblock %}
